@@ -1,0 +1,72 @@
+\section{Resultados}
+
+Com o método original utilizado pela empresa em estudo temos a seguinte tabela de desempenho, abaixo indicada, agrupando o desenvolvedor como single task, que atua exclusivamente com tarefas mensuráveis ou multi task, que atuam em outras tarefas além das mensuráveis.
+
+\begin{center}
+\begin{tabular}{ | l | l | r | r | r | } 
+ \hline
+ Programador & Tipo & Pontos & Pontos & Razão de \\ 
+ & & Desejáveis & Realizados & Desempenho \\ \hline
+ Dev 1 & Single Task & 208 & 99,5 & 0,48 \\
+ Dev 2 & Single Task & 208 & 69 & 0,33 \\
+ Dev 3 & Single Task & 208 & 76,5 & 0,37 \\
+ Dev 4 & Multi Task & 150 & 66 & 0,44 \\
+ Dev 5 & Single Task & 208 & 85 & 0,41 \\
+ Dev 6 & Multi Task & 208 & 105 & 0,50 \\
+ \hline
+\end{tabular}
+\end{center}
+
+A empresa utiliza o cálculo de desempenho citado por \citeonline{barbaran1998indicadores}, que é definido pela seguinte fórmula:\par
+\[
+DESEMPENHO = PONTOS\_ACEITOS/PONTOS\_PLANEJADOS
+\]
+
+Utilizando a fórmula proposta neste estudo é possível elaborar a tabela abaixo, com o mesmo agrupamento da tabela anterior, ou seja single ou multi task.
+
+\begin{center}
+\begin{tabular}{ | l | l | r | r | r | } 
+ \hline
+ Programador & Tipo & Pontos & Pontos & Razão de \\ 
+ & & Desejáveis & Realizados & Desempenho \\ \hline
+ Dev 1 & Single Task & 208 & 169,2 & 0,81 \\
+ Dev 2 & Single Task & 208 & 98.0 & 0,47 \\
+ Dev 3 & Single Task & 208 & 105,1 & 0,51 \\
+ Dev 4 & Multi Task & 206 & 145,7 & 0,71 \\
+ Dev 5 & Single Task & 208 & 117,4 & 0,56 \\
+ Dev 6 & Multi Task & 208 & 194,4 & 0,93 \\
+ \hline
+\end{tabular}
+\end{center}
+
+As duas tabelas, embora parecidas, pedem interpretações diferentes. A primeira tabela traz apenas os dados mensuráveis, os que têm pontos de história, desconsiderando as demais dados de tarefas não mensuráveis. A interpretação desta tabela deve levar em consideração, numa análise empírica e manual, que a entrega pode ter sido afetada por diversos fatores que não foram considerados no cálculo.\par
+Já a segunda tabela traz o método proposto por este trabalho, que já inclui outras tarefas que consumiram tempo do programador, tornando a análise mais simples e rápida para a equipe de gestão. \par 
+É possível observar que a entrega bruta dos desenvolvedores Multi Task ficou levemente superior aos demais integrantes da equipe, diferentemente do que se esperava durante a preparação do estudo. Com o resultado obtido é possível proceder a análises das causas que impactaram na entrega das tarefas. Algumas hipóteses, embora não sendo objeto deste estudo, foram levantadas, entre elas está a distribuição de tarefas irregular entre os integrantes, bem como diferentes níveis de expertises exigidas.\par
+
+Podemos evidenciar a diferença entre o modelo anteriormente utilizado pela empresa e o novo modelo ora apresentado, procedendo-se a uma comparação simples entre as duas tabelas:
+
+\begin{center}
+\begin{tabular}{ | l | l | r | r | r | } 
+ \hline
+ Programador & Tipo & Razão de & Razão de & Diferença \\ 
+ & & Desempenho & Desempenho & Bruta e  \\ 
+ & & Mod. Original & Mod. Proposto & Percentual \\ \hline
+ Dev 1 & Single Task & 0,48 & 0,81 & 0,33 / 69\% \\
+ Dev 2 & Single Task & 0,33 & 0,47 & 0,14 / 42\% \\
+ Dev 3 & Single Task & 0,37 & 0,51 & 0,14 / 38\% \\
+ Dev 4 & Multi Task & 0,44 & 0,71 & 0,27 / 61\% \\
+ Dev 5 & Single Task & 0,41 & 0,56 & 0,15 / 37\% \\
+ Dev 6 & Multi Task & 0,50 & 0,93 & 0,43 / 86\% \\
+ \hline
+\end{tabular}
+\end{center}
+
+Observando-se a variação entre os dois modelos de métodos, os resultados indicam uma alteração média de 55,5\% na razão de desempenho, sendo superior a 60\% nos colaboradores MultiTask. Com auxilio destas tabelas foi possível realizar a validação do modelo desenvolvido in loco, com a participação da gestão da empresa, que aprovou o modelo proposto e iniciou a sua implementação.
+
+
+%Este resultado levou a empresa participante do estudo a iniciar uma nova análise para entender o motivo do estudo ter apontado dados diferentes dos esperados.
+
+%
+%
+%
+%Embora podemos ver que as tarefas atribuídas foram semelhantes, levantamos o questionamento: Aqueles que são "multi task" estão se esforçando mais para entregar o mesmo número de tarefas mensuráveis que os demais single task mesmo com as demandas não mensuráveis, ou aqueles single task estão "acomodados" usando a taxa de entrega dos multi task em suas tarefas mensuráveis como referência de entrega, ignorando o fato destes terem as tarefas não mensuráveis também?\par

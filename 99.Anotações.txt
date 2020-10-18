@@ -1,0 +1,42 @@
+\part{Preparação da Pesquisa}
+(...)
+\chapter{Metodologia}
+(...)
+\part{Referenciais teóricos}
+(...)
+\chapter{O trabalho de Charles Darwin}
+(...)
+\part{Resultados}
+(...)
+
+
+Com base nos dados disponíveis no Trac o registro de trabalho foi dividido em algumas categorias:
+
+\begin{itemize}
+    \item Horas Ausentes: Tempo em que o desenvolvedor estava impedido de trabalhar para a empresa, por exemplo, uma licença médica;
+    \item Horas em Atividades de Minha Responsabilidade: Neste grupo está incluído todo o tempo gasto com histórias atribuídas ao desenvolvedor;
+    \item Horas em Atividades de Responsabilidade de Outros: O tempo gasto auxiliando outros integrantes da equipe foi incluído neste grupo;
+    \item Horas em "Não-História": Neste item foram consideradas todos os outros registros de trabalho, principalmente em atividades não mensuráveis como suporte.
+\end{itemize}
+
+\section{Medida de Tamanho das Histórias}
+
+
+
+Vale ressaltar dois pontos: durante os trabalhos tivemos algumas alterações na composição da equipe, sendo que no final dos experimentos apenas 6 integrantes da equipe de testes iniciais ainda faziam parte do experimento, portanto parte dos dados foram deixados de lado. Segundo item relevante é que a empresa não possui distinção de cargo em níveis, por isso agrupamos os participantes em dois grupos: "Júnior" e "Sênior", sendo 3 desenvolvedores de cada grupo.
+
+
+
+
+
+Sprints 442-452
+
+
+
+Devs:
+1-Gustavo
+2-Haruo
+3-Heitor
+4-João
+5-Othon
+6-Paulo

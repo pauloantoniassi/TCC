@@ -1,40 +1,44 @@
 \section{Resultados}
 
+Para analisarmos os resultados, utilizamos uma amostra de 4 Sprints da empresa participante, equivalente a aproximadamente 4 semanas de trabalho.\par
 Com o método original utilizado pela empresa em estudo temos a seguinte tabela de desempenho, abaixo indicada, agrupando o desenvolvedor como single task, que atua exclusivamente com tarefas mensuráveis ou multi task, que atuam em outras tarefas além das mensuráveis.
 
 \begin{center}
 \begin{tabular}{ | l | l | r | r | r | } 
  \hline
- Programador & Tipo & Pontos & Pontos & Razão de \\ 
- & & Desejáveis & Realizados & Desempenho \\ \hline
- Dev 1 & Single Task & 208 & 99,5 & 0,48 \\
- Dev 2 & Single Task & 208 & 69 & 0,33 \\
- Dev 3 & Single Task & 208 & 76,5 & 0,37 \\
- Dev 4 & Multi Task & 150 & 66 & 0,44 \\
- Dev 5 & Single Task & 208 & 85 & 0,41 \\
- Dev 6 & Multi Task & 208 & 105 & 0,50 \\
+ Programador & Tipo & Pontos & Horas & Razão de \\ 
+ & & Realizados & Utilizadas & Desempenho \\ 
+ & & & & (pontos/hora) \\ \hline
+ Dev 1 & Single Task & 99  & 414 & 0,24 \\
+ Dev 2 & Single Task & 69  & 367 & 0,19 \\
+ Dev 3 & Single Task & 76  & 351 & 0,22 \\
+ Dev 4 & Multi Task  & 66  & 247 & 0,27 \\
+ Dev 5 & Single Task & 85  & 383 & 0,22 \\
+ Dev 6 & Multi Task  & 105 & 419 & 0,25 \\
  \hline
 \end{tabular}
 \end{center}
 
-A empresa utiliza o cálculo de desempenho citado por \citeonline{barbaran1998indicadores}, que é definido pela seguinte fórmula:\par
-\[
-DESEMPENHO = PONTOS\_ACEITOS/PONTOS\_PLANEJADOS
-\]
+Conforme já citado neste trabalho, a empresa utiliza uma variação do cálculo de desempenho citado por \citeonline{barbaran1998indicadores}, que é definido pela seguinte fórmula:\par
+
+\begin{equation}
+    DESEMPENHO = { PONTOS\_ACEITOS \over HORAS\_UTILIZADAS }
+\end{equation}
 
 Utilizando a fórmula proposta neste estudo é possível elaborar a tabela abaixo, com o mesmo agrupamento da tabela anterior, ou seja single ou multi task.
 
 \begin{center}
 \begin{tabular}{ | l | l | r | r | r | } 
  \hline
- Programador & Tipo & Pontos & Pontos & Razão de \\ 
- & & Desejáveis & Realizados & Desempenho \\ \hline
- Dev 1 & Single Task & 208 & 169,2 & 0,81 \\
- Dev 2 & Single Task & 208 & 98.0 & 0,47 \\
- Dev 3 & Single Task & 208 & 105,1 & 0,51 \\
- Dev 4 & Multi Task & 206 & 145,7 & 0,71 \\
- Dev 5 & Single Task & 208 & 117,4 & 0,56 \\
- Dev 6 & Multi Task & 208 & 194,4 & 0,93 \\
+ Programador & Tipo & Pontos & Horas & Razão de \\ 
+ & & Realizados & Utilizadas & Desempenho \\ 
+ & & & & (pontos/hora) \\ \hline
+ Dev 1 & Single Task & 169,2 & 453,2 & 0,37 \\
+ Dev 2 & Single Task & 98,0  & 407,1 & 0,24 \\
+ Dev 3 & Single Task & 105,1 & 381,3 & 0,27 \\
+ Dev 4 & Multi Task  & 145,7 & 384,8 & 0,37 \\
+ Dev 5 & Single Task & 117,4 & 415,7 & 0,28 \\
+ Dev 6 & Multi Task  & 194,4 & 445,9 & 0,43  \\
  \hline
 \end{tabular}
 \end{center}
@@ -51,22 +55,15 @@ Podemos evidenciar a diferença entre o modelo anteriormente utilizado pela empr
  Programador & Tipo & Razão de & Razão de & Diferença \\ 
  & & Desempenho & Desempenho & Bruta e  \\ 
  & & Mod. Original & Mod. Proposto & Percentual \\ \hline
- Dev 1 & Single Task & 0,48 & 0,81 & 0,33 / 69\% \\
- Dev 2 & Single Task & 0,33 & 0,47 & 0,14 / 42\% \\
- Dev 3 & Single Task & 0,37 & 0,51 & 0,14 / 38\% \\
- Dev 4 & Multi Task & 0,44 & 0,71 & 0,27 / 61\% \\
- Dev 5 & Single Task & 0,41 & 0,56 & 0,15 / 37\% \\
- Dev 6 & Multi Task & 0,50 & 0,93 & 0,43 / 86\% \\
+ Dev 1 & Single & 0,24 & 0,37 & 0,13 / 54\% \\
+ Dev 2 & Single & 0,19 & 0,24 & 0,05 / 26\% \\
+ Dev 3 & Single & 0,22 & 0,27 & 0,05 / 23\% \\
+ Dev 4 & Multi  & 0,27 & 0,37 & 0,10 / 37\% \\
+ Dev 5 & Single & 0,22 & 0,28 & 0,06 / 27\% \\
+ Dev 6 & Multi  & 0,25 & 0,43 & 0,18 / 72\% \\
  \hline
 \end{tabular}
 \end{center}
 
-Observando-se a variação entre os dois modelos de métodos, os resultados indicam uma alteração média de 55,5\% na razão de desempenho, sendo superior a 60\% nos colaboradores MultiTask. Com auxilio destas tabelas foi possível realizar a validação do modelo desenvolvido in loco, com a participação da gestão da empresa, que aprovou o modelo proposto e iniciou a sua implementação.
-
-
-%Este resultado levou a empresa participante do estudo a iniciar uma nova análise para entender o motivo do estudo ter apontado dados diferentes dos esperados.
-
-%
-%
-%
-%Embora podemos ver que as tarefas atribuídas foram semelhantes, levantamos o questionamento: Aqueles que são "multi task" estão se esforçando mais para entregar o mesmo número de tarefas mensuráveis que os demais single task mesmo com as demandas não mensuráveis, ou aqueles single task estão "acomodados" usando a taxa de entrega dos multi task em suas tarefas mensuráveis como referência de entrega, ignorando o fato destes terem as tarefas não mensuráveis também?\par
+Observando-se a variação entre os dois modelos de métodos, os resultados indicam uma alteração média de 39,8\% na razão de desempenho. Nesta tabela, a diferença percentual indica o quão significativo é as tarefas não mensuráveis no dia a dia do colaborador.\par
+Com auxilio destas tabelas foi possível realizar a validação do modelo desenvolvido in loco, com a participação da gestão da empresa, que aprovou o modelo proposto e iniciou a sua implementação.

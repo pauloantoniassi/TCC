@@ -5,29 +5,72 @@ A metodologia adotada neste artigo foi o estudo de campo. Foram coletados os dad
 O estudo ora apresentadado, teve como suporte os dados e informações coletados de uma pequena empresa de desenvolvimento de software do sul do Brasil. Esta empresa possui dois grandes departamentos, desenvolvimento e infraestrutura. O desenvolvimento é dividido entre uma equipe dedicada a um grande cliente específico,  (outsourcing), chamada de "Equipe Cooperativa", e outra equipe multi-cliente, chamada de "Equipe Fábrica". A equipe Cooperativa, por ser dedicada a um único cliente e trabalhar sob demanda, possui uma forma de trabalho bem definida, específica e pouco maleável. O estudo foi focado na equipe Fábrica, uma vez que esta possui as características do Scrum e Métodos Ágeis. Durante o desenvolvimento deste trabalho, a equipe fábrica está buscando se adequar às boas práticas, bem como a processos de desenvolvimento visando  obter a certificação CMMI e/ou MPSBR.\par
 No início dos levantamento dos dados "in locu"  a empresa media o desempenho de sua equipe utilizando o tempo gasto em histórias e a pontuação da história, considerando a razão entre os dois como sendo o desempenho do time. Porém, pode-se observar que alguns integrantes da equipe utilizavam parte do tempo disponível o exercício espercífico da tarefa para outras atividades além do desenvolvimento de histórias. Este tempo gasto com outras atividades estava sendo descartado no cálculo de desempenho e, embora o cálculo só levasse em consideração as horas de desenvolvimento, a taxa de entrega da equipe estava sendo falsamente afetada, gerando prejuízo nem sempre observado pelos gestores.\par
 
-\subsection{Coleta de dados}
+\subsection{Modelo Inicial}
+A forma de cálculo de desempenho demonstrado por \citeauthor{barbaran1998indicadores} utiliza as seguintes variáveis e é demonstrada abaixo:
+
+\begin{itemize}
+    \item PF: Soma dos pontos das tarefas implementadas
+    \item PES: Número de pessoas disponíveis por mês
+    \item DES: Desempenho calculado
+\end{itemize}
+
+\begin{equation}
+    DES = \frac{PF}{PES}
+\end{equation}
+
+\bigskip
+
+Já o modelo inicialmente utilizada pela empresa participante do estudo é uma variação do modelo original citado por \citeauthor{barbaran1998indicadores} em seu trabalho. Nesta variação do modelo, utiliza-se as variáveis abaixo, podendo estar no escopo da equipe ou do desenvolvedor:
+
+\begin{itemize}
+    \item PA: Soma dos pontos das tarefas implementadas e aceitas nos testes. Tarefas implementadas porém não aprovadas em teste não são consideradas.
+    \item HR: Soma das horas gastas na implementação de stories e correção de bugs, mesmo que estes não possuam pontos de tarefa.
+    \item DES: Desempenho calculado
+\end{itemize}
+
+
+\begin{equation}
+    DES = \frac{PA}{HR}
+\end{equation}
+
+\bigskip
+
+\subsection{Desenvolvimento do Modelo Proposto}
+
+\subsubsection{Coleta de dados}
 A coleta de dados foi realizada através do sistema de gestão de projetos, que é utilizado pela empresa estudada, ou seja, o Trac \cite{TracProject}. Trac é um sistema de gestão de projetos open source criado em 2003. Ainda hoje o Trac é mantido pela Edgewall Software. Neste sistema Trac, as tarefas são chamadas de Tickets. O primeiro ticket criado pela empresa em estudo neste sistema, foi no ano de 2009, data da sua implantação e também da última atualização do sistema. Até a conclusão deste artigo,a empresa utilizava a versão 0.11.5 de jul/2009.\par
 O Trac é executado em Python e utiliza SQLite pra armazenar dados. Estas características tornam o sistema lento e custoso para obtenção de dados, porque a SQLite tem baixo desempenho com significativas bases de dados. Para contornar este problema, foi construída uma aplicação em Node.js, que faz a importação dos dados para MySQL utilizando a API que é disponibilizada pelo Trac. Esta importação, realizada pelo menos uma vez ao dia, dura cerca de 10 minutos. Com os dados disponíveis no MySQL foi possível seguir com os trabalhos de forma mais otimizada. \par
 Para finalizar a preparação dos dados, tratamos as informações para remover outliers e possíveis dados inválidos. Foram removidas tarefas sem um responsável, tarefa sem estimativa de tempo, tarefas duplicadas ou tarefas atribuídas a programadores que não fazem mais parte do quadro de funcionários da empresa.\par
 
-\subsection{Modelo Proposto}
-Após a coleta de dados, foi desenvolvido o método de cálculo, buscando atingir os objetivos descritos na introdução. Nesta análise foram levadas em consideração as seguintes variáveis para cada desenvolvedor, no intervalo de uma sprint:
+\subsubsection{Proposta}
+
+Após a coleta de dados, foi desenvolvido o método de cálculo, buscando atingir os objetivos descritos na introdução. Nesta análise foram levadas em consideração as seguintes variáveis para cada desenvolvedor, no intervalo de uma Sprint:
+
 \begin{itemize}
     \item PP: Pontos planejados na sprint
-    \item OBJ: Objetivo/Entrega ideal em pontos
     \item PA: Soma dos pontos aprovados nos testes
     \item HS: Horas utilizadas em atividades mensuráveis (que possuem story points)
     \item HNS: Horas utilizadas em atividades não mensuráveis (que não possuem story points)
-    \item HA: Horas que o programador ficou ausente ou indisponível após o início da sprint
+    \item HA: Horas que o programador ficou ausente ou indisponível após o início da Sprint
+    \item ENTT: Valor equivalente a entrega total em pontos
     \item DES: Desempenho calculado
 \end{itemize}
 
-Usando estas variáveis a fórmula encontrada foi:
+Usando estas variáveis obtemos duas fórmulas:
+\bigskip
 
-\[
-DES = (PA+(PA/HS*HNS)+(PA/HS*HA))/MAX(PP, OBJ)
-\]
-Sendo MAX() a função que retorna o maior valor entre seus parâmetros.
+\begin{equation} \label{nova_1}
+    ENTT = (PA + (\frac{PA}{HS} \times HNS ) + ( \frac{PA}{HS} \times HA )) 
+\end{equation}
 
-Nesta fórmula é necessário esclarecer a importância da variável HA. Esta variável está contida na fórmula, para que possibilitar comparar a pontuação entregue entre as sprints, sem haja a possibilidade de comparar a pontuação entregue entre as sprints, sem que seja afetada negativamente pela ausência ou indisponibilidade do programador durante o período de elaboração da tarefa. Esta variável HA, aplicada em conjunto com as outras presentes na fórmula acima, também é utilizada para normalizar a entrega das tarefas entre todos os programadores que possuem a mesma carga horária semanal, permitindo visualizar claramente a comparação de desempenho entre eles.\par
-A variável OBJ indica o número de pontos entregues pelo programador, cujo resultado será considerados como ideal. Esta variável OBJ deve ser definida pela própria equipe de produção, evitando-se ao máximo qualquer modificação ou alteração durante o desenvolvimento dos trabalhos. 
+\bigskip
+
+\begin{equation} \label{nova_2}
+    DES = \frac{ENTT}{HS + HNS + HA}
+\end{equation}
+
+\bigskip
+
+Na fórmula \ref{nova_1} é necessário esclarecer a importância da variável HA. Esta variável está contida na fórmula, para que possibilitar comparar a pontuação entregue entre as Sprints, sem haja a possibilidade de comparar a pontuação entregue entre as Sprints, sem que seja afetada negativamente pela ausência ou indisponibilidade do programador durante o período de elaboração da tarefa. Esta variável HA, aplicada em conjunto com as outras presentes na fórmula acima, também é utilizada para normalizar a entrega das tarefas entre todos os programadores que possuem a mesma carga horária semanal, permitindo visualizar claramente a comparação de desempenho entre eles.\par
+
+Com as fórmulas \ref{nova_1} e \ref{nova_2} é possível encontrar dois valores úteis para a análise empírica do desempenho. Na \ref{nova_1} obtemos a variável ENTT, que representa a entrega bruta do desenvolvedor. Esta variável já está normalizada e é a que irá permitir a comparação da entrega bruta direta entre toda a equipe. A \ref{nova_2} é a que irá determinar o valor da variável DES. A variável DES representa a velocidade da equipe, utilizando os valores normalizados da fórmula \ref{nova_1}.

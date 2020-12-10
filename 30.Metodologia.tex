@@ -5,36 +5,6 @@ A metodologia adotada neste artigo foi o estudo de campo. Foram coletados os dad
 O estudo ora apresentadado, teve como suporte os dados e informações coletados de uma pequena empresa de desenvolvimento de software do sul do Brasil. Esta empresa possui dois grandes departamentos, desenvolvimento e infraestrutura. O desenvolvimento é dividido entre uma equipe dedicada a um grande cliente específico,  (outsourcing), chamada de "Equipe Cooperativa", e outra equipe multi-cliente, chamada de "Equipe Fábrica". A equipe Cooperativa, por ser dedicada a um único cliente e trabalhar sob demanda, possui uma forma de trabalho bem definida, específica e pouco maleável. O estudo foi focado na equipe Fábrica, uma vez que esta possui as características do Scrum e Métodos Ágeis. Durante o desenvolvimento deste trabalho, a equipe fábrica está buscando se adequar às boas práticas, bem como a processos de desenvolvimento visando  obter a certificação CMMI e/ou MPSBR.\par
 No início dos levantamento dos dados "in locu"  a empresa media o desempenho de sua equipe utilizando o tempo gasto em histórias e a pontuação da história, considerando a razão entre os dois como sendo o desempenho do time. Porém, pode-se observar que alguns integrantes da equipe utilizavam parte do tempo disponível o exercício espercífico da tarefa para outras atividades além do desenvolvimento de histórias. Este tempo gasto com outras atividades estava sendo descartado no cálculo de desempenho e, embora o cálculo só levasse em consideração as horas de desenvolvimento, a taxa de entrega da equipe estava sendo falsamente afetada, gerando prejuízo nem sempre observado pelos gestores.\par
 
-\subsection{Modelo Inicial}
-A forma de cálculo de desempenho demonstrado por \citeauthor{barbaran1998indicadores} utiliza as seguintes variáveis e é demonstrada abaixo:
-
-\begin{itemize}
-    \item PF: Soma dos pontos das tarefas implementadas
-    \item PES: Número de pessoas disponíveis por mês
-    \item DES: Desempenho calculado
-\end{itemize}
-
-\begin{equation}
-    DES = \frac{PF}{PES}
-\end{equation}
-
-\bigskip
-
-Já o modelo inicialmente utilizada pela empresa participante do estudo é uma variação do modelo original citado por \citeauthor{barbaran1998indicadores} em seu trabalho. Nesta variação do modelo, utiliza-se as variáveis abaixo, podendo estar no escopo da equipe ou do desenvolvedor:
-
-\begin{itemize}
-    \item PA: Soma dos pontos das tarefas implementadas e aceitas nos testes. Tarefas implementadas porém não aprovadas em teste não são consideradas.
-    \item HR: Soma das horas gastas na implementação de stories e correção de bugs, mesmo que estes não possuam pontos de tarefa.
-    \item DES: Desempenho calculado
-\end{itemize}
-
-
-\begin{equation}
-    DES = \frac{PA}{HR}
-\end{equation}
-
-\bigskip
-
 \subsection{Desenvolvimento do Modelo Proposto}
 
 \subsubsection{Coleta de dados}
@@ -44,20 +14,7 @@ Para finalizar a preparação dos dados, tratamos as informações para remover 
 
 \subsubsection{Proposta}
 
-Após a coleta de dados, foi desenvolvido o método de cálculo, buscando atingir os objetivos descritos na introdução. Nesta análise foram levadas em consideração as seguintes variáveis para cada desenvolvedor, no intervalo de uma Sprint:
-
-\begin{itemize}
-    \item PP: Pontos planejados na sprint
-    \item PA: Soma dos pontos aprovados nos testes
-    \item HS: Horas utilizadas em atividades mensuráveis (que possuem story points)
-    \item HNS: Horas utilizadas em atividades não mensuráveis (que não possuem story points)
-    \item HA: Horas que o programador ficou ausente ou indisponível após o início da Sprint
-    \item ENTT: Valor equivalente a entrega total em pontos
-    \item DES: Desempenho calculado
-\end{itemize}
-
-Usando estas variáveis obtemos duas fórmulas:
-\bigskip
+Após a coleta de dados, foi desenvolvido o método de cálculo, buscando atingir os objetivos descritos na introdução. Obtemos duas fórmulas a seguir:
 
 \begin{equation} \label{nova_1}
     ENTT = (PA + (\frac{PA}{HS} \times HNS ) + ( \frac{PA}{HS} \times HA )) 
@@ -70,6 +27,18 @@ Usando estas variáveis obtemos duas fórmulas:
 \end{equation}
 
 \bigskip
+
+Nesta análise foram levadas em consideração as seguintes variáveis para cada desenvolvedor, no intervalo de uma Sprint:
+
+\begin{itemize}
+    \item PP: Pontos planejados na sprint
+    \item PA: Soma dos pontos aprovados nos testes
+    \item HS: Horas utilizadas em atividades mensuráveis (que possuem story points)
+    \item HNS: Horas utilizadas em atividades não mensuráveis (que não possuem story points)
+    \item HA: Horas que o programador ficou ausente ou indisponível após o início da Sprint
+    \item ENTT: Valor equivalente a entrega total em pontos
+    \item DES: Desempenho calculado
+\end{itemize}
 
 Na fórmula \ref{nova_1} é necessário esclarecer a importância da variável HA. Esta variável está contida na fórmula, para que possibilitar comparar a pontuação entregue entre as Sprints, sem haja a possibilidade de comparar a pontuação entregue entre as Sprints, sem que seja afetada negativamente pela ausência ou indisponibilidade do programador durante o período de elaboração da tarefa. Esta variável HA, aplicada em conjunto com as outras presentes na fórmula acima, também é utilizada para normalizar a entrega das tarefas entre todos os programadores que possuem a mesma carga horária semanal, permitindo visualizar claramente a comparação de desempenho entre eles.\par
 
